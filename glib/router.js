@@ -1,3 +1,9 @@
+FlowRouter.route('/feed', {
+  triggersEnter: [AccountsTemplates.ensureSignedIn],
+  action: function(params, queryParams) {
+    BlazeLayout.render("LayoutPrincipal", {main:"Feed"});
+  }
+});
 FlowRouter.route('/', {
     action: function(params, queryParams) {
         BlazeLayout.render('LayoutPrincipal', {main: "Inicio"});
