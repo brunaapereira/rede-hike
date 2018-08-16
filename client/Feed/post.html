@@ -11,9 +11,14 @@
   	{{else}}
   	<button class="btn btn-default like-button">Curti</button>
   	{{/if}}
-  	
+
   	<div>{{numeroCurtidas}} curtidas</div>
+
+ 	{{#each comentarios}}
+    <div>{{texto}}</div>
+    {{/each}}
+ 
+   {{> NovoComentario}}
   </div>
-  {{userCurtiu}}
 </div>
 </template>
