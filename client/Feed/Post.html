@@ -14,8 +14,8 @@
 
   	<div>{{numeroCurtidas}} curtidas</div>
 
- 	{{#each comentarios}}
-    <div>{{texto}}</div>
+ 	  {{#each comentarios}}
+      {{> Comentario}}
     {{/each}}
  
    {{> NovoComentario}}

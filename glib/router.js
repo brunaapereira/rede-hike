@@ -22,9 +22,9 @@ FlowRouter.route('/contato', {
     }
 });
 
-
-FlowRouter.route('/feed', {
-    action: function(params, queryParams) {
-        BlazeLayout.render('LayoutPrincipal', {main: "Feed"});
-    }
+FlowRouter.route('/perfis/:id', {
+  triggersEnter: [AccountsTemplates.ensureSignedIn],
+  action: function(params, queryParams) {
+    BlazeLayout.render("LayoutPrincipal", {main:"Perfil"});
+  }
 });
