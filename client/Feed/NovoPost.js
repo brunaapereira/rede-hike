@@ -1,12 +1,30 @@
+Template.NovoPost.onCreated(function(){
+	this.urlImagem = new ReactiveVar();
+});
+
 Template.NovoPost.events({
 	"submit form": function(event, template) {
 		event.preventDefault();
-		var textoForm = event.target.texto.value
-
+		var textoForm = event.target.texto.value;
+		var urlImagem = template.urlImagem.get();
+		
 		console.log(textoForm);
-		console.log(Meteor.userId());
+		console.log(template.urlImagem.get());
 
-		Meteor.call("inserirPost", textoForm);
+		Meteor.call("inserirPost", textoForm, urlImagem);
+
 		event.target.texto.value = "";
-	}
+	},
+	"change .myFileInput": function(event, template) {
+    FS.Utility.eachFile(event, function(file) {
+    	Images.insert(file, function (err, fileObj) {
+        if (err) {
+      		// handle error
+        } else {
+          // handle success depending what you need to do
+          template.urlImagem.set("/cfs/files/images/" + fileObj._id);
+          }
+      });
+    });
+  }
 });

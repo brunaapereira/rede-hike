@@ -8,7 +8,7 @@ Template.Perfil.helpers({
 
   posts: function() {
     var idDoUsuario = FlowRouter.getParam("id");
-    var postsDoPerfil = Posts.find({autorId: idDoUsuario}).fetch();
+    var postsDoPerfil = Posts.find({autorId: idDoUsuario}).fetch().reverse();
       
     return postsDoPerfil
   },

@@ -5,8 +5,12 @@ FlowRouter.route('/feed', {
   }
 });
 FlowRouter.route('/', {
-    action: function(params, queryParams) {
-        BlazeLayout.render('LayoutPrincipal', {main: "Inicio"});
+  action: function(params, queryParams) {
+    if(Meteor.userId() === null) {    
+      BlazeLayout.render('LayoutPrincipal', {main: "Inicio"});
+    } else {
+      FlowRouter.go("/feed");
+    }
     }
 });
 

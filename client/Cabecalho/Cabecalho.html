@@ -22,7 +22,9 @@
         {{/if}}
       </ul>
 
-      {{> Pesquisa}}
+      {{#if currentUser}}
+        {{> Pesquisa}}
+      {{/if}}
 
       <ul class="nav navbar-nav navbar-right">
         <li>{{> atNavButton}}</li>
