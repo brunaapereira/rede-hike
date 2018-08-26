@@ -21,7 +21,6 @@ Template.NovoPost.events({
         if (err) {
       		// handle error
         } else {
-          // handle success depending what you need to do
           template.urlImagem.set("/cfs/files/images/" + fileObj._id);
           }
       });

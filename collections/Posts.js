@@ -24,5 +24,13 @@ Meteor.methods({
 				curtidas: Meteor.userId()
 			}
 		})
+	},
+	"removerPost": function(idPost) {
+		var post = Posts.findOne({_id: idPost});
+		var idAutor = post.autorId;
+
+		if(idAutor === Meteor.userId()) {
+			Posts.remove(idPost);	
+		}
 	}
 });

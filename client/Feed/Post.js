@@ -1,3 +1,7 @@
+Template.Post.onCreated(function() {
+	Meteor.subscribe("comentarios", this.data._id);
+})
+
 Template.Post.helpers({
 	usernameAutor: function() {
 		var autorId = this.autorId;
@@ -19,6 +23,11 @@ Template.Post.helpers({
 	},
 	comentarios: function() {
 		return Comentarios.find({post: this._id}).fetch();
+	},
+
+	eAutor: function() {
+		var autorId = this.autorId;
+		return autorId === Meteor.userId();
 	}
 });
 
@@ -28,5 +37,8 @@ Template.Post.events({
 	},
 	"click .dislike-button": function(event, template){
 		Meteor.call("descurtirPost", template.data._id)
+	},
+	"click .remove-button": function(event, template){
+		Meteor.call("removerPost", template.data._id)
 	}
 })
