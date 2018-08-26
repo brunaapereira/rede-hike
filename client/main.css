@@ -64,3 +64,13 @@ body {
 .fa {
   font-size: 25px;
 }
+
+.link-perfil {
+  color: #5a5d60;
+  font-weight: bold;
+}
+
+.link-perfil:hover {
+  color:black;
+  text-decoration: none;
+}
